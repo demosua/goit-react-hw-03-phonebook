@@ -30,14 +30,8 @@ class App extends Component {
 
   addContact = data => {
     const contactId = nanoid();
-    const { contacts } = this.state
-
     const contact = {id: contactId, name: data.name, number: data.number,};
-
-    contacts.filter(contact => contact.name.toLowerCase() === data.name.toLowerCase()).length > 0
-      ? alert(`${data.name} is already in contacts.`)
-      : this.setState(({ contacts }) => ({ contacts: [contact, ...contacts] }));
-    
+    this.setState(({ contacts }) => ({ contacts: [contact, ...contacts] }));
   };
 
   deleteContact = contactId => {
